@@ -35,9 +35,18 @@ const fetchAPI = function (date) {
   });
 };
 
-const submitAPI = async (formData) => {
-  console.log("3Hs :>> api.js -> formData:", formData);
-  return { status: 200, message: "OK" };
+const submitAPI = async (newBooking) => {
+  const { date, time, guests, occasion } = newBooking;
+  if (!date || !time || !guests || !occasion) return false;
+
+  // Retrieve previous booking information, if applicable
+  const existingBookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+  existingBookings.push(newBooking);
+
+  // Store data in local storage
+  localStorage.setItem("bookings", JSON.stringify(existingBookings));
+
+  return true;
 };
 
 export { fetchAPI, submitAPI };

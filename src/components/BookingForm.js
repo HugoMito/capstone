@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { fetchAPI, submitAPI } from "./api";
+import { fetchAPI } from "./api";
 
 export default function BookingForm({
   availableTimes,
@@ -14,7 +14,6 @@ export default function BookingForm({
   });
 
   const hnd_Change = (event) => {
-    // event.preventDefault();
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
 
@@ -25,17 +24,6 @@ export default function BookingForm({
 
   const hnd_Blur = (event) => {
     event.preventDefault();
-    // const { name, value } = event.target;
-  };
-
-  const hnd_Submit = async (event) => {
-    event.preventDefault();
-
-    const result = await submitAPI(formState);
-
-    console.log("3Hs :>> result:", result);
-
-    // onSubmit();
   };
 
   // Get available times, whenever the date changes
@@ -60,7 +48,8 @@ export default function BookingForm({
     <Fragment>
       <center>
         <main className="bookingGrid">
-          <form className="bookingFields" onSubmit={hnd_Submit}>
+          {/* <form className="bookingFields" onSubmit={hnd_Submit}> */}
+          <form className="bookingFields">
             <label htmlFor="res-date">Reservation date</label>
             <input
               id="res-date"
@@ -113,7 +102,16 @@ export default function BookingForm({
               <option>Anniversary</option>
             </select>
 
-            <input type="submit" value="Make Your reservation" />
+            {/* <input type="submit" value="Make Your reservation" /> */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                onSubmit(formState);
+              }}
+            >
+              Make your reservation
+            </button>
           </form>
         </main>
       </center>

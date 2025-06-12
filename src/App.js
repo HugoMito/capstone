@@ -10,6 +10,7 @@ import OrderOnline from "./pages/OrderOnline";
 import Login from "./pages/Login";
 import BookingPage from "./pages/BookingPage";
 import "./App.css";
+import ConfirmedBooking from "./pages/ConfirmedBooking";
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/orderonline" element={<OrderOnline />} />
           <Route path="/login" element={<Login />} />
+
+          <Route path="/confirmedbooking" element={<ConfirmedBooking />} />
         </Routes>
       </BrowserRouter>
     </Fragment>
