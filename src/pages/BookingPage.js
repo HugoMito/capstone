@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 import BookingForm from "../components/BookingForm";
 import { submitAPI, fetchAPI } from "../components/api";
 
@@ -53,6 +54,7 @@ export default function BookingPage() {
 
   return (
     <Fragment>
+      <Header />
       <BookingForm
         availableTimes={availableTimes}
         setAvailableTimes={(date) =>

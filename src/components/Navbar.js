@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import littleLemonLogo from "../assets/images/Logo.svg";
 
@@ -13,30 +13,22 @@ const menuOptions = [
 ];
 
 export default function Navbar() {
-  // // Build Menu
-  // const MenuOptions = ({ menuOptions }) => {
-  //   return (
-  //     <Fragment>
-  //       {menuOptions.map((menu) => {
-  //         return (
-  //           <Link className="navbarOptions" key={menu.name} to={menu.path}>
-  //             {menu.name}
-  //           </Link>
-  //         );
-  //       })}
-  //     </Fragment>
-  //   );
-  // };
-
   // Build Menu
   const MenuOptions = ({ menuOptions }) => {
     return (
       <Fragment>
         {menuOptions.map((menu) => {
           return (
-            <Link className="navbarOptions" key={menu.name} to={menu.path}>
-              {menu.name}
-            </Link>
+            // <Link className="navbarOptions" key={menu.name} to={menu.path}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "navbarOption active" : "navbarOption"
+              }
+              key={menu.name}
+              to={menu.path}
+            >
+              <span>{menu.name}</span>
+            </NavLink>
           );
         })}
       </Fragment>

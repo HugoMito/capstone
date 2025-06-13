@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import restaurantFood from "../assets/images/restauranfood.jpg";
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  const hnd_Click = () => {
+    // Navigate to the home page
+    navigate("/booking");
+  };
+
   return (
     <center className="headerCenter">
       <main className="headerGrid">
@@ -15,9 +23,10 @@ export default function Header() {
             style={{
               color: "var(--ll-color-yellow)",
               fontFamily: "var(--ff-markazi)",
-              fontWeight: "var(--fw-markazi-bold)",
-              fontSize: "4rem",
-              marginTop: "10px",
+              fontWeight: "var(--fw-markazi-normal)",
+              fontSize: "3.4rem",
+              height: "2.875rem",
+              marginTop: "1rem",
             }}
           >
             Little Lemon
@@ -26,9 +35,9 @@ export default function Header() {
             style={{
               color: "white",
               fontFamily: "var(--ff-markazi)",
-              fontWeight: "var(--fw-markazi-normal)",
-              fontSize: "2.5rem",
-              marginTop: "0",
+              fontWeight: "var(--fw-markazi-thin)",
+              fontSize: "2.1rem",
+              marginTop: "0.2rem",
               padding: 0,
             }}
           >
@@ -39,14 +48,25 @@ export default function Header() {
               color: "white",
               fontFamily: "var(--ff-karla)",
               fontWeight: "var(--fw-karla-normal)",
-              fontSize: "1rem",
+              fontSize: "1.16rem",
+              marginTop: "0.5rem",
             }}
           >
-            Lorem ipsumLorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            We are a family owned
+            <br />
+            Mediterranean restaurant,
+            <br />
+            focused on traditional
+            <br />
+            recipes served with a modern
+            <br />
+            twist.
           </span>
+          <button className="headerButton" onClick={hnd_Click}>
+            Reserve a Table
+          </button>
         </section>
-        <section>
+        <section className="headerImageContainer">
           <img src={restaurantFood} alt="Restaurant" width="200px" />
         </section>
       </main>
