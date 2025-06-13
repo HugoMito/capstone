@@ -26,8 +26,11 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 a:visited {
@@ -69,13 +72,26 @@ input[aria-invalid="true"]:focus {
   border: 2px solid red;
 }
 
+/* For Pages that are Out of Scope of Capstone project */
 .outOfScope {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
   text-align: center;
+}
+
+/* For pages that are In the Scope of Capstone project */
+.fade-in {
+  animation: fadeIn 0.2s ease-in;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /**************************
@@ -156,6 +172,8 @@ input[aria-invalid="true"]:focus {
   border: solid 1px transparent;
   border-radius: 1rem;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  color: var(--ll-color-green);
+  cursor: pointer;
   font-family: var(--ff-karla);
   font-weight: var(--fw-karla-bold);
   font-size: 1rem;
@@ -167,6 +185,7 @@ input[aria-invalid="true"]:focus {
 
 .headerButton:hover {
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+  color: black;
 }
 .headerButton:active {
   color: white;
@@ -179,7 +198,6 @@ input[aria-invalid="true"]:focus {
   height: 21rem;
   margin: 2rem 0 0 auto;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 19rem;
 }
 .headerImageContainer:hover {
@@ -224,6 +242,7 @@ input[aria-invalid="true"]:focus {
   border: solid 1px transparent;
   border-radius: 1rem;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+  color: var(--ll-color-green);
   font-family: var(--ff-karla);
   font-weight: var(--fw-karla-bold);
   font-size: 1rem;
@@ -234,7 +253,8 @@ input[aria-invalid="true"]:focus {
 }
 
 .bookingButton:hover {
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+  color: black;
 }
 .bookingButton:active {
   color: white;

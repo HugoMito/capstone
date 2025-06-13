@@ -16,7 +16,7 @@ export default function Navbar() {
   // Build Menu
   const MenuOptions = ({ menuOptions }) => {
     return (
-      <Fragment>
+      <main className="fade-in">
         {menuOptions.map((menu) => {
           return (
             // <Link className="navbarOptions" key={menu.name} to={menu.path}>
@@ -31,13 +31,13 @@ export default function Navbar() {
             </NavLink>
           );
         })}
-      </Fragment>
+      </main>
     );
   };
 
   return (
     <Fragment>
-      <center>
+      <center id="navbar">
         <main className="navbarGrid">
           <section className="navbarLogo">
             <img className="navbarImage" src={littleLemonLogo} alt="Logo" />

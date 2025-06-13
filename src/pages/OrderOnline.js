@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
+
 export default function OrderOnline() {
+  const [availableHeight, setAvailableHeight] = useState("100vh");
+
+  useEffect(() => {
+    const navHeight = document.getElementById("navbar")?.offsetHeight || 0;
+    const headerHeight = document.getElementById("header")?.offsetHeight || 0;
+    const totalOffset = navHeight + headerHeight;
+
+    setAvailableHeight(`calc(100vh - ${totalOffset}px)`);
+  }, []);
+
   return (
-    <main className="outOfScope">
-      <h1>Order Online component</h1>
+    <main className="outOfScope fade-in" style={{ minHeight: availableHeight }}>
+      <h1>OrderOnline component</h1>
       <h3>Out of Scope</h3>
     </main>
   );

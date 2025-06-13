@@ -102,7 +102,7 @@ export default function BookingForm({
   return (
     <Fragment>
       <center>
-        <main className="bookingGrid">
+        <main className="bookingGrid fade-in">
           <form className="bookingFields">
             <label htmlFor="res-date">Reservation date</label>
             <input

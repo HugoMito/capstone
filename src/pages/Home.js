@@ -1,10 +1,20 @@
-import { Fragment } from "react";
-import Header from "../components/Header";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [availableHeight, setAvailableHeight] = useState("100vh");
+
+  useEffect(() => {
+    const navHeight = document.getElementById("navbar")?.offsetHeight || 0;
+    const headerHeight = document.getElementById("header")?.offsetHeight || 0;
+    const totalOffset = navHeight + headerHeight;
+
+    setAvailableHeight(`calc(100vh - ${totalOffset}px)`);
+  }, []);
+
   return (
-    <Fragment>
-      <Header />
-    </Fragment>
+    <main className="outOfScope fade-in" style={{ minHeight: availableHeight }}>
+      <h1>Home component</h1>
+      <h3>Out of Scope</h3>
+    </main>
   );
 }

@@ -1,6 +1,5 @@
-import { Fragment, useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 import BookingForm from "../components/BookingForm";
 import { submitAPI, fetchAPI } from "../components/api";
 
@@ -53,8 +52,7 @@ export default function BookingPage() {
   }, [navigateTo]);
 
   return (
-    <Fragment>
-      <Header />
+    <main>
       <BookingForm
         availableTimes={availableTimes}
         setAvailableTimes={(date) =>
@@ -62,6 +60,6 @@ export default function BookingPage() {
         }
         onSubmit={submitForm}
       />
-    </Fragment>
+    </main>
   );
 }
