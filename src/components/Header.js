@@ -17,7 +17,7 @@ export default function Header() {
       path: "/",
       image: restaurant,
       description:
-        "We are a family owned<br /><i>Mediterranean</i> restaurant,<br />focused on traditional<br />recipes served with a <i>modern</i><br />twist.",
+        "Welcome to <b><i><u>Home</u></i></b> page.<br/><br/>We are a family owned <i>Mediterranean</i> restaurant, focused on traditional recipes served with a <i>modern</i> twist.<br/><br/>We are glad to have you here.",
       buttonLabel: "Reserve a Table",
     },
     {
@@ -38,7 +38,7 @@ export default function Header() {
       path: "/booking",
       image: restaurantFood,
       description:
-        "Welcome to <b><i><u>Reservations</u></i></b> page.<br/>👉🏼 Enter you reservation details.<br/>👉🏼 Then, press Make your reservation button.<br/>👉🏼 Address any potential error in the form.",
+        "Welcome to <b><i><u>Reservations</u></i></b> page.<br/><br/>👉🏼 Enter you reservation details.<br/>👉🏼 Then, press Make your reservation button.<br/>👉🏼 Address any potential error in the form.",
       buttonLabel: "Home",
     },
     {
@@ -55,6 +55,13 @@ export default function Header() {
         "Welcome to <b><i><u>Login</u></i></b> page.<br/><br/>👉🏼 This page is out of Capstone Project scope.<br/>👉🏼 Placeholder will remain available.",
       buttonLabel: "Home",
     },
+    {
+      path: "/confirmedbooking",
+      image: chef,
+      description:
+        "Welcome to <b><i><u>Confirmation</u></i></b> page.<br/><br/>👉🏼 Your confirmation is compolete.<br/>👉🏼 You will receive an email confirmation.<br/><br/>We are eager to see you soon.",
+      buttonLabel: "Home",
+    },
   ];
   const pageInformation = pagesInformation.find((page) => page.path === path);
 
@@ -68,23 +75,18 @@ export default function Header() {
   };
 
   return (
-    <center className="headerCenter" id="header">
+    <header className="header" id="header">
       <main className="headerGrid">
-        <section
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "left",
-          }}
-        >
+        <span style={{ gridColumn: "span 1", visibility: "hidden" }} />
+        <section className="headerSectionText">
           <span
             style={{
               color: "var(--ll-color-yellow)",
               fontFamily: "var(--ff-markazi)",
               fontWeight: "var(--fw-markazi-normal)",
-              fontSize: "3.4rem",
+              fontSize: "calc(2.55rem + 0.6vw)",
               height: "2.875rem",
-              marginTop: "1rem",
+              marginTop: "0.4rem",
             }}
           >
             Little Lemon
@@ -94,7 +96,7 @@ export default function Header() {
               color: "white",
               fontFamily: "var(--ff-markazi)",
               fontWeight: "var(--fw-markazi-thin)",
-              fontSize: "2.1rem",
+              fontSize: "calc(1.25rem + 1vw)",
               marginTop: "0.2rem",
               padding: 0,
             }}
@@ -111,7 +113,8 @@ export default function Header() {
                 color: "white",
                 fontFamily: "var(--ff-karla)",
                 fontWeight: "var(--fw-karla-normal)",
-                fontSize: "1.16rem",
+                fontSize: "calc(0.32rem + 1vw)",
+
                 marginTop: "0.5rem",
               }}
             >
@@ -126,6 +129,6 @@ export default function Header() {
           <img src={pageInformation.image} alt="PageImage" width="200px" />
         </section>
       </main>
-    </center>
+    </header>
   );
 }

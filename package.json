@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.1.1",
+    "@mui/material": "^7.1.1",
     "html-react-parser": "^5.2.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -12,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "react-scripts test --verbose"
+    "test": "react-scripts test --verbose --watchAll"
   },
   "eslintConfig": {
     "extends": [

@@ -18,6 +18,8 @@
 
   --ll-color-green: rgb(73, 94, 87);
   --ll-color-yellow: rgb(255, 205, 56);
+  --ll-color-beige: rgb(237, 239, 238);
+  --ll-color-mamey: rgb(239, 152, 118);
 }
 
 *,
@@ -37,13 +39,12 @@ a:visited {
   color: inherit;
 }
 
-/* Format the forms fields */
+/* Format the BookingForm lables, inputs, and selects */
 label {
   font-family: var(--ff-karla);
   font-size: 1rem;
   font-weight: var(--fw-karla-bold);
 }
-
 input,
 select {
   border: solid 1px grey;
@@ -72,7 +73,7 @@ input[aria-invalid="true"]:focus {
   border: 2px solid red;
 }
 
-/* For Pages that are Out of Scope of Capstone project */
+/* For Pages Out of Capstone project scope */
 .outOfScope {
   align-items: center;
   display: flex;
@@ -81,7 +82,7 @@ input[aria-invalid="true"]:focus {
   text-align: center;
 }
 
-/* For pages that are In the Scope of Capstone project */
+/* For pages that are in Capstone project scope*/
 .fade-in {
   animation: fadeIn 0.2s ease-in;
 }
@@ -97,21 +98,30 @@ input[aria-invalid="true"]:focus {
 /**************************
  * Navigation bar setup
  **************************/
+#navbar {
+  left: 0;
+  position: static;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .navbarGrid {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(30, 1fr);
   justify-content: center;
-  max-width: 58%;
-}
-.navbarLogo {
-  display: flex;
-  grid-column: span 3;
-  margin: 1.2rem 0;
+  width: 70%;
 }
 .navbarImage {
-  max-width: 12rem;
-  width: 100%;
+  grid-column: span 8;
+  margin: 0.5rem 0;
+  width: 12.5rem;
 }
+
+.navbarOptions.active,
 .navbarOptions {
   align-items: center;
   display: flex;
@@ -119,14 +129,17 @@ input[aria-invalid="true"]:focus {
   font-family: var(--ff-karla), sans-serif;
   font-size: calc(0.3rem + 1vw);
   font-weight: var(--fw-karla-bold);
-  grid-column: span 7;
-  justify-content: space-around;
+  /* 1 hamburger button + 8 logo + 21 options = total 30*/
+  grid-column: span 21;
+  justify-content: space-evenly;
   padding: 0;
   white-space: nowrap;
 }
-/* kktelas */
+
+.navbar-links,
 .navbarOption {
   border-radius: 1rem;
+  font-family: var(--ff-karla);
   margin: 0 0.188rem;
   padding: 0.313rem 0.75rem;
   text-decoration: none;
@@ -145,28 +158,73 @@ input[aria-invalid="true"]:focus {
   color: var(--ll-color-yellow);
 }
 
-/* if smart phone device */
-@media (max-width: 900px) {
-  .navbarGrid {
-    max-width: 95%;
-  }
+.navbar-links {
+  display: none;
+}
+.navbarMenuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  height: 1.625rem;
+  padding: 0;
+  width: 1.625rem;
+}
+.navbarMenuImage {
+  height: 1rem;
+  margin: 5px;
+  width: 1rem;
+  background-color: white;
+}
+
+.sidebar {
+  background-color: white;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  left: 0.7rem;
+  opacity: 0;
+  padding: 0.5rem;
+  position: fixed;
+  text-align: left;
+  top: 2.6rem;
+  transition: opacity 0.5s ease;
+  width: 30vw;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /**************************
  * Header setup
  **************************/
-.headerCenter {
+.header {
   background-color: var(--ll-color-green);
-  height: 18rem;
+  display: flex;
+  flex-direction: row;
+  height: 20rem;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 .headerGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(20, 1fr);
   gap: 5px;
   justify-content: center;
-  max-width: 58%;
+  width: 72%;
 }
-
+.headerSectionText {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 10;
+  text-align: left;
+}
 .headerButton {
   background-color: var(--ll-color-yellow);
   border: solid 1px transparent;
@@ -178,11 +236,10 @@ input[aria-invalid="true"]:focus {
   font-weight: var(--fw-karla-bold);
   font-size: 1rem;
   height: 2.2rem;
-  margin-top: 0.6rem;
+  margin: 0.8rem 0;
   transition: box-shadow 0.3s ease, color 0.3s ease;
   width: 11rem;
 }
-
 .headerButton:hover {
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
   color: black;
@@ -195,9 +252,11 @@ input[aria-invalid="true"]:focus {
   border-radius: 1rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   display: flex;
+  grid-column: span 9;
   height: 21rem;
-  margin: 2rem 0 0 auto;
+  margin: 2rem 1rem 0 auto;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
   width: 19rem;
 }
 .headerImageContainer:hover {
@@ -214,6 +273,107 @@ input[aria-invalid="true"]:focus {
   width: 100%;
 }
 
+/*************************************************
+ * Smart phone configuration & aligned with <Grid>
+ ************************************************/
+@media (max-width: 899px) {
+  .navbarGrid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-content: center;
+    width: 95%;
+    padding: 0.25rem 0;
+  }
+
+  .navbarMenuButton {
+    display: block;
+  }
+
+  .navbarImage {
+    margin: 0.2rem 0;
+    width: 12.5rem;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+  .navbarOptions {
+    display: none;
+  }
+  .navbarOption {
+    font-size: 0.8rem;
+    margin: 0.125rem 0;
+    padding: 0.06rem 0 0.1rem 0.5rem;
+  }
+
+  .header {
+    height: fit-content;
+  }
+  .headerSectionText {
+    grid-column: span 19 !important;
+  }
+  .headerSectionSpanText {
+    font-size: calc(3.4rem);
+  }
+
+  .headerImageContainer.fade-in,
+  .headerImageContainer img {
+    display: none;
+    box-shadow: none;
+  }
+
+  .bookingFields {
+    width: 15rem;
+  }
+}
+
+/**************************
+ * Home page setup
+ **************************/
+.homeButton {
+  background-color: var(--ll-color-yellow);
+  border: solid 1px transparent;
+  border-radius: 1rem;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  color: var(--ll-color-green);
+  cursor: pointer;
+  font-family: var(--ff-karla);
+  font-weight: var(--fw-karla-bold);
+  font-size: 1rem;
+  height: 3rem;
+  margin: 0.8rem 0;
+  transition: box-shadow 0.3s ease, color 0.3s ease;
+  width: 11rem;
+}
+.homeButton:hover {
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+  color: black;
+}
+.homeButton:active {
+  color: white;
+}
+.homeImageContainer {
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 12rem;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+.homeImageContainer:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  transform: scale(1.02);
+}
+
+.homeImageContainer img {
+  border: none;
+  border-radius: 1rem 1rem 0 0;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+}
+
 /**************************
  * Booking setup
  **************************/
@@ -222,7 +382,7 @@ input[aria-invalid="true"]:focus {
   grid-template-columns: repeat(8, 1fr);
   gap: 5px;
   justify-content: center;
-  max-width: 58%;
+  max-width: 65%;
   margin-top: 1rem;
 }
 .bookingFields {
@@ -232,7 +392,7 @@ input[aria-invalid="true"]:focus {
   font-size: calc(0.3rem + 1vw);
   font-weight: var(--fw-karla-bold);
   gap: 0.3rem;
-  grid-column: span 3;
+  grid-column: span 4;
   padding: 0;
   text-align: left;
 }
@@ -258,4 +418,12 @@ input[aria-invalid="true"]:focus {
 }
 .bookingButton:active {
   color: white;
+}
+
+.reservation {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
